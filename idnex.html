@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简书</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!-- 全局顶部导航栏 -->
+<nav class="navbar">
+    <div class="width-limit">
+        <!-- 左上方 Logo -->
+        <a href="#/" class="logo">
+            <img src="images/logo.png" alt="">
+        </a>
+        <!-- 右上角 -->
+        <!-- 未登录显示登录/注册/写文章 -->
+        <a class=" btn write-btn" href="http://www.jianshu.com/sign_in">写文章</a>
+        <a href="http://www.jianshu.com/sign_up" class="btn sign-up">注册</a>
+        <a href="http://www.jianshu.com/sign_in" class="btn sign-in">登录</a>
+
+        <div class="container w">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/">
+                            <span class="menu-text">首页</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a class="app-download-btn" href="#">
+                            <span class="menu-text">下载App</span>
+                        </a>
+                    </li>
+                    <li class="search">
+                        <form target="_blank" action="#" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓">
+                            <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input">
+                            <a class="search-btn btn" href="javascript:void(null)">搜索</a>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="index container clearfix">
+    <div class="row">
+        <div id="indexCarousel" class="carousel slide">
+        <div class="banner">
+            <ul>
+                <li><a href="#"><img src="images/1.jpg" alt="图片缓存中"></a></li>
+            </ul>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </div>
+
+        <div class="main" id="main">
+            <div id="list-container">
+                <!-- 文章列表模块 -->
+                <ul class="note-list">
+                    <li class="have-img"  v-for="(data,index) in dataList">
+                        <a href="#" class="wrap-img">
+                            <img :src="data.wrapImg" alt="">
+                        </a>
+                        <div class="content">
+                            <div class="author" v-for="author in data.authors">
+                                <a href="#" class="avatar">
+                                    <img :src="author.authorHead" alt="">
+                                </a>
+                                <div class="info">
+                                    <a href="#" class="nickname">{{ author.authorName }}</a>
+                                </div>
+                            </div>
+                            <div class="title">{{ data.title }}</div>
+                            <p class="abstract">
+                                {{ data.abstract }}
+                            </p>
+                            <div class="meta" v-for="meta in data.metas">
+                                <a href="#" class="collection-tag">{{ meta.collectionTag }}</a>
+                                <a href="#"> 看过{{ meta.read }}</a>
+                                <a href="#"> 评论{{ meta.comments }}</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 文章列表模块 -->
+            </div>
+        </div>
+
+        <div class="aside">
+
+        </div>
+    </div>
+</div>
+
+<script src="js/lib/vue.min.js"></script>
+<script src="js/lib/vue-resource.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
